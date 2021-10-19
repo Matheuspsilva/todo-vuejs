@@ -6,8 +6,8 @@
     </div>
 
     <ul class="lista">
-      <li v-for="tarefa of tarefas" class="item">
-        <card-tarefa :title="tarefa.title" @removerTarefa="remove(tarefa)"></card-tarefa>
+      <li v-for="(tarefa, key) of tarefas" class="item" v-bind:key="tarefa.id">
+        <card-tarefa :title="tarefa.title" @removerTarefa="remove(key)"></card-tarefa>
       </li>
     </ul>
 
@@ -24,24 +24,24 @@ export default {
   },
   data () {
     return {
-      tarefas: {
-        tarefa: {
+      tarefas: [
+        {
           title: "Limpar a casa"
         },
-        tarefa2: {
+        {
           title: "Estudar vuejs"
         },
-        tarefa3: {
+        {
           title: "Fazer exercício físico"
         },
 
-      }
+      ]
     }
   },
     methods:{
 
     remove(tarefa){
-      alert("remover tarefa " + tarefa.title);
+      this.tarefas.splice(tarefa, 1);
     }
 
   },

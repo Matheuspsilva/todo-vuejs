@@ -19,7 +19,9 @@ export default {
 
   methods:{
     removerTarefa(){
-      this.$emit('removerTarefa');
+      if(confirm('Confirma operacao?')) {
+        this.$emit('removerTarefa');
+      }
     }
   }
 }
